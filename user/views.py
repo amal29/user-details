@@ -20,9 +20,6 @@ def home(request):
         }
     return Response(api_urls)
 
-
-
-
 @api_view(['GET'])
 
 def show(request):
@@ -39,3 +36,11 @@ def view(request):
 
 
 
+
+@api_view(['GET',])
+def paginationapi(request):
+    paginator = PageNumberPagination()
+    query_set = details.objects.all()
+    context = paginator.paginate_queryset(query_set, request)
+    serializer = detailsSerializer(context, many=True)
+    return paginator.get_paginated_response(serializer.data)
