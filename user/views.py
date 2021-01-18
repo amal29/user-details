@@ -13,6 +13,8 @@ from rest_framework import serializers
 def home(request):
     api_urls ={
      'List':'/show/',
+     'view':'/view/',
+
 
 
         }
